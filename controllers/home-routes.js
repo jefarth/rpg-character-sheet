@@ -1,91 +1,174 @@
-// const router = require('express').Router();
-// const { Gallery, Painting } = require('../models');
+const router = require('express').Router();
+const { User, Character, Class } = require('../models');
+const authorizeMiddleware = require('../middlewares/authorizeMiddlewares');
 
-// // GET all galleries for homepage
-// router.get('/', async (req, res) => {
-//   try {
-//     const dbGalleryData = await Gallery.findAll({
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: ['filename', 'description'],
-//         },
-//       ],
-//     });
+router.get('/', authorizeMiddleware, async (req, res) => {
 
-//     const galleries = dbGalleryData.map((gallery) =>
-//       gallery.get({ plain: true })
-//     );
+    try {
 
-//     res.render('homepage', {
-//       galleries,
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+        const dbCharacterData = await User.findAll({
 
-// // GET one gallery
-// router.get('/gallery/:id', async (req, res) => {
-//   // If the user is not logged in, redirect the user to the login page
-//   if (!req.session.loggedIn) {
-//     res.redirect('/login');
-//   } else {
-//     // If the user is logged in, allow them to view the gallery
-//     try {
-//       const dbGalleryData = await Gallery.findByPk(req.params.id, {
-//         include: [
-//           {
-//             model: Painting,
-//             attributes: [
-//               'id',
-//               'title',
-//               'artist',
-//               'exhibition_date',
-//               'filename',
-//               'description',
-//             ],
-//           },
-//         ],
-//       });
-//       const gallery = dbGalleryData.get({ plain: true });
-//       res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-//   }
-// });
+            include: [
 
-// // GET one painting
-// router.get('/painting/:id', async (req, res) => {
-//   // If the user is not logged in, redirect the user to the login page
-//   if (!req.session.loggedIn) {
-//     res.redirect('/login');
-//   } else {
-//     // If the user is logged in, allow them to view the painting
-//     try {
-//       const dbPaintingData = await Painting.findByPk(req.params.id);
+                {
+                model: Character,
+                attributes: [ 'name', 'level', 'class_id'],
+                },
 
-//       const painting = dbPaintingData.get({ plain: true });
+            ],
 
-//       res.render('painting', { painting, loggedIn: req.session.loggedIn });
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-//   }
-// });
 
-// router.get('/login', (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect('/');
-//     return;
-//   }
 
-//   res.render('login');
-// });
+        });
 
-// module.exports = router;
+        const characters = dbCharacterData.map((character) =>
+
+        character.get({ plain: true})
+    
+        );
+        res.render('homepage', {
+
+            characters,
+            loggedIn: req.session.loggedIn,
+
+        });
+
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+
+
+    }
+
+});
+
+// Get all characters the user created
+router.get('/characters-page/:id', authorizeMiddleware, async (req,res) => {
+
+    try {
+
+        const dbCharacterData = await User.findAll({
+
+            include: [
+
+                {
+
+                    model: Character,
+                    attributes: ['id', 'name', 'level', 'base_hp', 'base_mana', 'base_atk', 'base_def', 
+                    'class_id', 'weapon_id', 'armor_id', 'spell_1', 'spell_2', 'spell_3', ],
+
+                },
+
+            ],
+
+        });
+
+        const characters = dbCharacterData.get({plain: true});
+        res.render('characters-page', {characters, loggedIn: req.session.loggedIn});
+        
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+        
+    }
+
+
+
+});
+
+router.get('/weapons-page/:id', authorizeMiddleware, async (req,res) => {
+
+    try {
+
+        const dbWeaponData = await Character.findAll({
+
+            include: [
+
+                {
+
+                    model: Weapon,
+                    attributes: ['id', 'name', 'bonus_atk', 'lvl_req'],
+
+                },
+
+            ],
+
+        });
+
+        const weapons = dbWeaponData.get({plain: true});
+        res.render('weapons-page', {weapons, loggedIn: req.session.loggedIn});
+        
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+        
+    }
+
+
+
+});
+
+router.get('/armor-page/:id', authorizeMiddleware, async (req,res) => {
+
+    try {
+
+        const dbArmorData = await Character.findAll({
+
+            include: [
+
+                {
+
+                    model: Armor,
+                    attributes: ['id', 'name', 'bonus_def', 'lvl_req'],
+
+                },
+
+            ],
+
+        });
+
+        const armor= dbArmorData.get({plain: true});
+        res.render('armor-page', {armor, loggedIn: req.session.loggedIn});
+        
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+        
+    }
+
+
+
+});
+
+router.get('/class-page/:id', authorizeMiddleware, async (req,res) => {
+
+    try {
+
+        const dbClassData = await Class.findAll();
+
+        const classes = dbClassData.get({plain: true});
+        res.render('class-page', {classes, loggedIn: req.session.loggedIn});
+        
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+        
+    }
+
+
+
+});
+
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });

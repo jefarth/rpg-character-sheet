@@ -19,11 +19,15 @@ Character.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    level: {
+    base_hp: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    base_hp: {
+    base_mana: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    base_atk: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
