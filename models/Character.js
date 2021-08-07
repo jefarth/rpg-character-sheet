@@ -56,24 +56,24 @@ Character.init(
           key: 'id',
         },
     },
-    spell_1: {
+    spell1: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'spell_1',
+          model: 'first_spell',
           key: 'id',
         },
     },
-    spell_2: {
+    spell2: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'spell_2',
+          model: 'second_spell',
           key: 'id',
         },
     },
-    spell_3: {
+    spell3: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'spell_3',
+          model: 'third_spell',
           key: 'id',
         },
     },
