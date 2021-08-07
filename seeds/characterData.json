@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "Balthazar",
+      "level": 5,
+      "base_hp": 15,
+      "base_mana": 15,
+      "base_atk": 20,
+      "base_def": 10,
+      "class_id": 1,
+      "weapon_id": 2,
+      "armor_id": 3,
+      "spell_1": 4,
+      "spell_2": 5,
+      "spell_3": 6
+
+     
+    }
+   
+  ]
+  
