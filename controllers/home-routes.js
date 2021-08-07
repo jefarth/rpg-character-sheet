@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { User, Character, Class } = require('../models');
-const authorizeMiddleware = require('../middlewares/authorizeMiddlewares');
 
-router.get('/', authorizeMiddleware, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const dbCharacterData = await Character.findAll({
             include: [
@@ -28,7 +27,7 @@ router.get('/', authorizeMiddleware, async (req, res) => {
 });
 
 // Get all characters the user created
-router.get('/characters-page/:id', authorizeMiddleware, async (req,res) => {
+router.get('/characters-page/:id', async (req,res) => {
     try {
         const dbCharacterData = await Character.findAll({
             include: [
@@ -50,7 +49,7 @@ router.get('/characters-page/:id', authorizeMiddleware, async (req,res) => {
 });
 
 // Gets all weapons
-router.get('/weapons-page/:id', authorizeMiddleware, async (req,res) => {
+router.get('/weapons-page/:id', async (req,res) => {
     try {
         const dbWeaponData = await Weapon.findAll({
             include: [
@@ -70,7 +69,7 @@ router.get('/weapons-page/:id', authorizeMiddleware, async (req,res) => {
     }
 });
 
-router.get('/armor-page/:id', authorizeMiddleware, async (req,res) => {
+router.get('/armor-page/:id', async (req,res) => {
     try {
         const dbArmorData = await Armor.findAll({
             include: [
@@ -90,7 +89,7 @@ router.get('/armor-page/:id', authorizeMiddleware, async (req,res) => {
     }
 });
 
-router.get('/class-page/:id', authorizeMiddleware, async (req,res) => {
+router.get('/class-page/:id', async (req,res) => {
     try {
         const dbClassData = await Class.findAll();
 

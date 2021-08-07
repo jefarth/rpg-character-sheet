@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class First_Spell extends Model {}
+class Spell extends Model {}
 
-First_Spell.init(
+Spell.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,14 +23,20 @@ First_Spell.init(
         type: DataTypes.INTEGER,
         allowNull: true,
     },
- 
+    character_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'character',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'first_spell',
+    modelName: 'spell',
   }
 );
 
-module.exports = First_Spell;
+module.exports = Spell;

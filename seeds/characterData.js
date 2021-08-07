@@ -13,13 +13,8 @@ const characterData = [
       class_id: 1,
       weapon_id: 2,
       armor_id: 3,
-      spell1: 1,
-      spell2: 2,
-      spell3: 3
-
-     
+      spell: 3,
     },
-   
   ];
 
   const seedCharacterData = () => Character.bulkCreate(characterData);
