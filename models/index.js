@@ -3,64 +3,51 @@ const Character = require('./Character');
 const Class = require('./Class');
 const Weapon = require('./Weapon');
 const Armor = require('./Armor');
-const Spell1 = require('./Spell1');
-const Spell2 = require('./Spell2');
-const Spell3 = require('./Spell3');
+const Spell = require('./Spell');
 
 User.hasMany(Character, {
   foreignKey: 'id',
 });
 
+Character.hasOne(Class, {
+    foreignKey: 'character_id'
+});
+
+Character.hasOne(Weapon, {
+    foreignKey: 'character_id'
+});
+
+Character.hasOne(Armor, {
+    foreignKey: 'character_id'
+});
+
+Character.hasMany(Spell, {
+    foreignKey: 'character_id'
+});
+
 Character.belongsTo(User, {
-  foreignKey: 'id',
-  constraints: false
+    foreignKey: 'id',
+    constraints: false
 });
 
 Class.belongsTo(Character, {
-
-    foreignKey: 'class_id',
+    foreignKey: 'character_id',
     constraints: false
-
 });
 
 Weapon.belongsTo(Character, {
-
-foreignKey: 'weapon_id',
-
-constraints: false
-
+    foreignKey: 'character_id',
+    constraints: false
 });
 
 Armor.belongsTo(Character, {
-
-    foreignKey: 'armor_id',
-
+    foreignKey: 'character_id',
     constraints: false
-
 });
 
-Spell1.belongsTo(Character, {
-
-    foreignKey: 'first_spell',
-
+Spell.belongsTo(Character, {
+    foreignKey: 'character_id',
     constraints: false
-
 });
 
-Spell2.belongsTo(Character, {
-
-    foreignKey: 'second_spell',
-
-    constraints: false
-
-});
-
-Spell3.belongsTo(Character, {
-
-    foreignKey: 'third_spell',
-
-    constraints: false
-
-});
-
-module.exports = { User, Character, Class, Weapon, Armor, Spell1, Spell2, Spell3 };
+module.exports = { User, Character, Class, Weapon, Armor, Spell };

@@ -1,38 +1,26 @@
-const { Spell1 } = require('../models');
+const { Spell } = require('../models');
 
-
-const spell1Data = [
-    {
-    
+const spellData = [
+  {
     id: 1,
     name: "Fireball",
     mana_cost: 7,
     damage: 8
-  
-   
   },
-
   {
-
     id: 2,
     name: "Blizzard",
     mana_cost: 5,
     damage: 5
-
-
   },
-
   {
-
     id: 3,
     name: "Lightning Strike",
     mana_cost: 10,
     damage: 15
-
-
   },
 ];
 
-const seedSpell1 = () => Spell1.bulkCreate(spell1Data);
+const seedSpell = () => Spell.bulkCreate(spellData);
 
-  module.exports = seedSpell1;
+module.exports = seedSpell;
