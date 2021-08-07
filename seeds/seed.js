@@ -1,34 +1,27 @@
 const sequelize = require('../config/connection');
-const userData = require('./userData');
-const characterData = require('./characterData');
-const classData = require('./classData')
-const weaponData = require('./weaponData');
-const armorData = require('./armorData');
-const spell1Data = require('./spell1');
-const spell2Data = require('./spell2');
-const spell3Data = require('./spell3');
+const seedUserData = require('./userData');
+const seedCharacterData = require('./characterData');
+const seedClass = require('./classData')
+const seedWeapons = require('./weaponData');
+const seedArmor = require('./armorData');
+const seedSpell = require('./spellData');
 
 const seedDatabase = async () => {
-await sequelize.sync({ force: true });
+    await sequelize.sync({ force: true });
 
-await userData();
+    await seedUserData();
 
-await spell3Data();
+    await seedSpell();
 
-await spell2Data();
+    await seedArmor();
 
-await spell1Data();
+    await seedWeapons();
 
-await armorData();
+    await seedClass();
 
-await weaponData();
+    await seedCharacterData();
 
-await classData();
+    process.exit(0);
+};
 
-await characterData();
-
- 
-  process.exit(0);
- };
-
- seedDatabase();
+seedDatabase();
