@@ -35,34 +35,6 @@ Character.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    // class_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'class',
-    //     key: 'id',
-    //   },
-    // },
-    // weapon_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'weapon',
-    //       key: 'id',
-    //     },
-    // },
-    // armor_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'armor',
-    //       key: 'id',
-    //     },
-    // },
-    // spell_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'spell',
-    //       key: 'id',
-    //     },
-    // },
   },
   {
     sequelize,
