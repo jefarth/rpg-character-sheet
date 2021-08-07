@@ -12,31 +12,34 @@
     <title>RPG Database</title>
 </head>
 <body>
-    <div class="container-fluid bg-secondary" id="bodyContainer" style="height: 100vh;">
+    <main class="container-fluid bg-secondary" id="bodyContainer" style="height: 100vh;">
         <nav class="navbar navbar-dark  bg-gradient" style="background-color: #751312;">
             <div class="container"></div>
                 <div class="col-4">
                     <a class="navbar-brand" href="/">RPG Database</a>
                 </div>
                 <div class="col-8 d-flex justify-content-evenly">
-                    <button type="button" class="btn btn-outline-light" id="myCharsBtn">My Characters</button>
-                    <button type="button" class="btn btn-outline-light" id="battleBtn">Battle!</button>
+                    <a class="btn btn-outline-light" id="battleBtn">Battle!</a>
+                    <a class="btn btn-outline-light" id="myCharsBtn">My Characters</a>
                     {{#if loggedIn}}
-                    <button type="button" class="btn btn-outline-light" id="newCharacterBtn">New Character</button>
-                    <button type="button" class="btn btn-outline-light" id="newCharacterBtn">New Weapon</button>
-                    <button type="button" class="btn btn-outline-light" id="newCharacterBtn">New Armor</button>
-                    <button type="button" class="btn btn-outline-light" id="logoutBtn">Log out</button>
+                    <a class="btn btn-outline-light" id="newCharBtn">New Character</a>
+                    <a class="btn btn-outline-light" id="newWeaponBtn">New Weapon</a>
+                    <a class="btn btn-outline-light" id="newArmorBtn">New Armor</a>
+                    <button class="btn btn-outline-light" id="logoutBtn">Log out</button>
                     {{else}}
-                    <button type="button" class="btn btn-outline-light" id="loginBtn">Log in</button> 
+                    <a id="loginBtn" href="/login" class="btn btn-outline-light">Log in</a> 
                     {{/if}}
                 </div>
             </div>
         </nav>
-        <main class="container-fluid bg-light py-3" style="height: 92vh;">
+        <div class="container-fluid bg-light py-3" style="height: 92vh;">
             {{{body}}}
-        </main>
-    </div>
+        </div>
+    </main>
 </body>
 {{!-- Bootstrap JS --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
 </html>
