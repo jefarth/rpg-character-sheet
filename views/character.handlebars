@@ -1,0 +1,44 @@
+<div id="characterPage" style="height: 100%;">
+                <div class="h-100 d-flex flex-row justify-content-around">
+                    
+                    <div class="bg-secondary d-flex flex-column justify-content-around" id="itemsAndSpells" style="width: 23%;">
+                        <div class="bg-primary m-2 h-50" id="equipment">
+                            <h2 class="text-center text-light bg-gradient p-2" style="background-color: #751312;">Equipment</h2>
+                            <h3>Weapon</h3>
+                            <h3>Armor</h3>
+                        </div>
+                        <div class="bg-primary m-2 h-50" id="spells">
+                            <h2 class="text-center text-light bg-gradient p-2" style="background-color: #751312;">Spells</h2>
+                        </div>
+                    </div>
+            
+                    <div class="bg-secondary d-flex flex-column justify-content-center w-75" id="artAndStats">
+                        <div class="bg-primary h-75 m-2" id="artContainer">
+                            <img src="" alt="character_art">
+                        </div>
+                        <div class="d-flex flex-row justify-content-around m-2" id="statsContainer">
+                            <ul class="list-group" id="basicInfo">
+                                <h3>Basic Info</h3>
+                                <li class="list-group-item">Name: {{character.name}}</li>
+                                <li class="list-group-item">Class: {{character.class}}</li>
+                                <li class="list-group-item">Level: {{character.level}}</li>
+                            </ul>
+                            <ul class="list-group" id="baseStats">
+                                <h3>Base Stats</h3>
+                                <li class="list-group-item">Attack: {{character.atk}}</li>
+                                <li class="list-group-item">Defense: {{character.def}}</li>
+                                <li class="list-group-item">HP: {{character.hp}}</li>
+                                <li class="list-group-item">Mana: {{character.mana}}</li>
+                            </ul>
+                            <ul class="list-group" id="calculatedStats">
+                                <h3>Actual Stats</h3>
+                                <li class="list-group-item">Attack: <span id="calculatedAtk"></span></li>
+                                <li class="list-group-item">Defense: <span id="calculatedDef"></span></li>
+                                <li class="list-group-item">HP: <span id="calculatedHp"></span></li>
+                                <li class="list-group-item">Mana: <span id="calculatedMana"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
