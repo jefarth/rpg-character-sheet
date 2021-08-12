@@ -1,6 +1,6 @@
 const sequelize = require('../config/connection');
 const seedUserData = require('./userData');
-const seedCharacterData = require('./characterData');
+const seedPlayerData = require('./playerData');
 const seedClass = require('./classData')
 const seedWeapons = require('./weaponData');
 const seedArmor = require('./armorData');
@@ -11,6 +11,8 @@ const seedDatabase = async () => {
 
     await seedUserData();
 
+    await seedPlayerData();
+
     await seedSpell();
 
     await seedArmor();
@@ -18,8 +20,6 @@ const seedDatabase = async () => {
     await seedWeapons();
 
     await seedClass();
-
-    await seedCharacterData();
 
     process.exit(0);
 };

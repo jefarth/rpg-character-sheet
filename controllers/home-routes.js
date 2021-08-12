@@ -1,23 +1,23 @@
 const router = require('express').Router();
-const { User, Character, Class } = require('../models');
+const { User, Player, Class, Weapon, Armor, Spell, PlayerWeapon } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const dbCharacterData = await Character.findAll({
+        const dbPlayerData = await Player.findAll({
             include: [
                 {
-                    model: Character,
+                    model: Player,
                     attributes: [ 'name', 'level', 'class_id'],
                 },
             ],
         });
 
-        const characters = dbCharacterData.map((character) =>
-            character.get({ plain: true})
+        const players = dbPlayerData.map((player) =>
+            player.get({ plain: true})
         );
 
         res.render('homepage', {
-            characters,
+            players,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -26,22 +26,17 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Get all characters the user created
-router.get('/characters-page/:id', async (req,res) => {
+// Get all players the user created
+router.get('/players-page/:id', async (req,res) => {
     try {
-        const dbCharacterData = await Character.findAll({
-            include: [
-                {
-                    model: Character,
-                    attributes: ['id', 'name', 'level', 'base_hp', 'base_mana', 'base_atk', 'base_def', 
-                    'class_id', 'weapon_id', 'armor_id', 'spell_1', 'spell_2', 'spell_3', ],
-                },
-            ],
+        const dbPlayerData = await Player.findByPk(req.params.id, {
+            include: [{model: Weapon}]
         });
+        
+        const player = dbPlayerData.get({plain: true});
 
-        const characters = dbCharacterData.get({plain: true});
-
-        res.render('characters-page', {characters, loggedIn: req.session.loggedIn});
+        // res.render('player', {player, loggedIn: req.session.loggedIn});
+        res.json(player)
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

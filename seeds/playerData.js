@@ -1,7 +1,7 @@
-const { Character } = require('../models');
+const { Player } = require('../models');
 
 
-const characterData = [
+const playerData = [
     {
       id: 1,
       name: "Balthazar",
@@ -13,11 +13,11 @@ const characterData = [
       class_id: 1,
       weapon_id: 2,
       armor_id: 3,
-      spell: 3,
+      spells: [1,2],
     },
   ];
 
-  const seedCharacterData = () => Character.bulkCreate(characterData);
+  const seedPlayerData = () => Player.bulkCreate(playerData);
 
-  module.exports = seedCharacterData;
+  module.exports = seedPlayerData;
   

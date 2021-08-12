@@ -23,13 +23,13 @@ Armor.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    character_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'character',
-        key: 'id',
-      },
-    },
+    // player_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'player',
+    //     key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,

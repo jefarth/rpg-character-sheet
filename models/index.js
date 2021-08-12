@@ -1,53 +1,56 @@
 const User = require('./User');
-const Character = require('./Character');
+const Player = require('./Player');
 const Class = require('./Class');
 const Weapon = require('./Weapon');
 const Armor = require('./Armor');
 const Spell = require('./Spell');
 
-User.hasMany(Character, {
+User.hasMany(Player, {
   foreignKey: 'id',
+  onDelete: 'CASCADE'
 });
 
-Character.hasOne(Class, {
-    foreignKey: 'character_id'
-});
-
-Character.hasOne(Weapon, {
-    foreignKey: 'character_id'
-});
-
-Character.hasOne(Armor, {
-    foreignKey: 'character_id'
-});
-
-Character.hasMany(Spell, {
-    foreignKey: 'character_id'
-});
-
-Character.belongsTo(User, {
+Player.belongsTo(User, {
     foreignKey: 'id',
-    constraints: false
+    constraints: false,
 });
 
-Class.belongsTo(Character, {
-    foreignKey: 'character_id',
-    constraints: false
+Player.hasOne(Class, {
+    foreignKey: 'player_id'
 });
 
-Weapon.belongsTo(Character, {
-    foreignKey: 'character_id',
-    constraints: false
+Player.hasOne(Weapon, {
+    foreignKey: 'player_id'
 });
 
-Armor.belongsTo(Character, {
-    foreignKey: 'character_id',
-    constraints: false
+Player.hasOne(Armor, {
+    foreignKey: 'player_id',
+    onDelete: 'CASCADE'
 });
 
-Spell.belongsTo(Character, {
-    foreignKey: 'character_id',
-    constraints: false
+Player.hasMany(Spell, {
+    foreignKey: 'player_id',
+    onDelete: 'CASCADE'
 });
 
-module.exports = { User, Character, Class, Weapon, Armor, Spell };
+Class.belongsTo(Player, {
+    foreignKey: 'player_id',
+    constraints: false,
+});
+
+// Weapon.belongsTo(Player, {
+//     foreignKey: 'player_id',
+//     constraints: false,
+// });
+
+Armor.belongsTo(Player, {
+    foreignKey: 'player_id',
+    constraints: false,
+});
+
+Spell.belongsTo(Player, {
+    foreignKey: 'player_id',
+    constraints: false,
+});
+
+module.exports = { User, Player, Class, Weapon, Armor, Spell };

@@ -1,25 +1,25 @@
-<div id="characterPage" class="container-fluid d-flex flex-row" style="height: 100%;">  
+<div id="playerPage" class="container-fluid d-flex flex-row" style="height: 100%;">  
 
         <div id="statsContainer" class="d-flex flex-column justify-content-around p-2 m-2 col-2">
             <ul class="list-group shadow" id="basicInfo">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Basic Info</h3>
-                <li class="list-group-item">Name: {{character.name}}</li>
-                <li class="list-group-item">Class: {{character.class}}</li>
-                <li class="list-group-item">Level: {{character.level}}</li>
+                <li class="list-group-item">Name: {{player.name}}</li>
+                <li class="list-group-item">Class: {{player.class}}</li>
+                <li class="list-group-item">Level: {{player.level}}</li>
             </ul>
             <ul class="list-group shadow" id="baseStats">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Base Stats</h3>
-                <li class="list-group-item">Attack: {{character.base_atk}}</li>
-                <li class="list-group-item">Defense: {{character.base_def}}</li>
-                <li class="list-group-item">HP: {{character.base_hp}}</li>
-                <li class="list-group-item">Mana: {{character.base_mana}}</li>
+                <li class="list-group-item">Attack: {{player.base_atk}}</li>
+                <li class="list-group-item">Defense: {{player.base_def}}</li>
+                <li class="list-group-item">HP: {{player.base_hp}}</li>
+                <li class="list-group-item">Mana: {{player.base_mana}}</li>
             </ul>
-            <ul class="list-group shadow" id="calculatedStats">
+            <ul class="list-group shadow" id="actualStats">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Actual Stats</h3>
-                <li class="list-group-item">Attack: <span id="calculatedAtk"></span></li>
-                <li class="list-group-item">Defense: <span id="calculatedDef"></span></li>
-                <li class="list-group-item">HP: <span id="calculatedHp"></span></li>
-                <li class="list-group-item">Mana: <span id="calculatedMana"></span></li>
+                <li class="list-group-item">Attack: <span id="actualAtk"></span></li>
+                <li class="list-group-item">Defense: <span id="actualDef"></span></li>
+                <li class="list-group-item">HP: <span id="actualHp"></span></li>
+                <li class="list-group-item">Mana: <span id="actualMana"></span></li>
             </ul>
         </div>
     
@@ -52,20 +52,20 @@
             <div class="m-2 h-50 shadow bg-light" id="spells">
                 <h2 class="text-center text-light bg-gradient p-2" style="background-color: #751312;">Spells</h2>
                 <div id="spellsList" class="px-2">
-                    <h4>{{character.spell_1.name}}</h4>
+                    <h4>{{player.spell_1.name}}</h4>
                     <ul>
-                        <li>{{character.spell_1.damage}}</li>
-                        <li>{{character.spell_1.mana_cost}}</li>
+                        <li>{{player.spell_1.damage}}</li>
+                        <li>{{player.spell_1.mana_cost}}</li>
                     </ul>
-                    <h4>{{character.spell_2.name}}</h4>
+                    <h4>{{player.spell_2.name}}</h4>
                     <ul>
-                        <li>{{character.spell_2.damage}}</li>
-                        <li>{{character.spell_2.mana_cost}}</li>
+                        <li>{{player.spell_2.damage}}</li>
+                        <li>{{player.spell_2.mana_cost}}</li>
                     </ul>
-                    <h4>{{character.spell_3.name}}</h4>
+                    <h4>{{player.spell_3.name}}</h4>
                     <ul>
-                        <li>{{character.spell_3.damage}}</li>
-                        <li>{{character.spell_3.mana_cost}}</li>
+                        <li>{{player.spell_3.damage}}</li>
+                        <li>{{player.spell_3.mana_cost}}</li>
                     </ul>
                 </div>
             </div>
@@ -73,7 +73,7 @@
         </div>
     
         <div id="artContainer" class="container-fluid m-2 d-flex justify-content-center" style="height: auto;">
-            <img class="img-fluid h-100 shadow-lg" src="https://cdnb.artstation.com/p/assets/images/images/016/620/149/large/dongwoo-kim-artstation-man.jpg?1552849944" alt="character_art">
+            <img class="img-fluid h-100 shadow-lg" src="{{player.art}}" alt="player_art">
         </div>
     </div>
 </div>
