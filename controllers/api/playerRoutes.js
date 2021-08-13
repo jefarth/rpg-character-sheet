@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
    
      const playerData = await Player.findAll({
         where: {
-            id: req.session.id
+            user_id: req.session.user_id
           },
       attributes: [
         'id',
