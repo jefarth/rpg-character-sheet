@@ -17,7 +17,8 @@ const weaponData = [
     id: 3,
     name: "Poison Dagger",
     bonus_atk: 10,
-    lvl_req: 10
+    lvl_req: 10,
+    player_id: 1
   },
 ];
 

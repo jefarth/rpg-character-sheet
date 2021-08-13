@@ -12,6 +12,7 @@ const playerData = [
       base_def: 10,
       class_id: 1,
       user_id: 1,
+      art: '/img/stock-rogue.jpg',
     },
   ];
 

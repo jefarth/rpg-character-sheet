@@ -5,7 +5,8 @@ const armorData = [
     id: 1,
     name: "Armor of the Unmoving",
     bonus_def: 12,
-    lvl_req: 9
+    lvl_req: 9,
+    player_id: 1
   },
   {
     id: 2,

@@ -30,12 +30,12 @@ router.get('/', async (req, res) => {
 router.get('/players-page/:id', async (req,res) => {
     try {
         const dbPlayerData = await Player.findByPk(req.params.id, {
-            include: [{model: Weapon}]
+            include: [{model: Weapon}, {model: Armor}, {model: Spell}, {model: Class}]
         });
         
         const player = dbPlayerData.get({plain: true});
 
-        // res.render('player', {player, loggedIn: req.session.loggedIn});
+        res.render('player', {player, loggedIn: req.session.loggedIn});
         res.json(player)
     } catch (err) {
         console.log(err);
