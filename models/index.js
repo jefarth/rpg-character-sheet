@@ -6,12 +6,12 @@ const Armor = require('./Armor');
 const Spell = require('./Spell');
 
 User.hasMany(Player, {
-  foreignKey: 'id',
+  foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
 
 Player.belongsTo(User, {
-    foreignKey: 'id',
+    foreignKey: 'user_id',
 });
 
 Class.hasMany(Player, {
