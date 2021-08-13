@@ -60,20 +60,19 @@ Player.init(
     hooks: {
       // If no art is selected, choose a stock image
       beforeCreate: (newPlayerData) => {
-        switch(newPlayerData.class_id) {
-          case 1:
-            newPlayerData.art = '/img/stock-rogue.jpg';
-            break;
-          case 2:
-            newPlayerData.art = '/img/stock-warlock.jpg';
-            break;
-          case 3:
-            newPlayerData.art = '/img/stock-warrior.jpg';
-            break;
+        switch(newPlayerData.dataValues.class_id) {
+          case '1':
+            newPlayerData.dataValues.art = '/img/stock-rogue.jpg';
+            return newPlayerData;
+          case '2':
+            newPlayerData.dataValues.art = '/img/stock-warlock.jpg';
+            return newPlayerData;
+          case '3':
+            newPlayerData.dataValues.art = '/img/stock-warrior.jpg';
+            return newPlayerData;
           default:
-            break;
+            return newPlayerData;
         }
-        return newPlayerData;
       }
     },
     sequelize,
