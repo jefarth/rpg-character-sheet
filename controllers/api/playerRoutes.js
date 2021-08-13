@@ -4,11 +4,11 @@ const sequelize = require('../../config/connection');
 
 router.get('/', async (req, res) => {
  
-    try {
+  try {
    
      const playerData = await Player.findAll({
         where: {
-            id: req.session.id
+            user_id: req.session.user_id
           },
       attributes: [
         'id',
@@ -43,8 +43,6 @@ router.get('/', async (req, res) => {
     const players = playerData.map(player => player.get({ plain: true }));
     res.render('playerPage', { players, loggedIn: true });
   
-    
-      
     } catch (err) {
       
       console.log(err);
@@ -53,6 +51,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+  
+  
   router.get('/:id', async (req, res) => {
  
     try {
@@ -105,6 +105,8 @@ router.get('/', async (req, res) => {
     }
   });
 
+  
+  
   router.post('/', async (req, res)=> {
 
     try {
@@ -169,6 +171,8 @@ router.get('/', async (req, res) => {
 
   });
 
+  
+  
   router.delete('/:id', async (req, res)=> {
 
     try {
