@@ -1,20 +1,22 @@
 <div class="container p-5 d-flex flex-wrap">
         {{#each players as |player|}}
             <div class="card player-card ms-4 mb-4 shadow" style="width: 18rem;">
+                    <a href="/players-page/{{player.id}}">
                     <img class="card-img-top" src="{{player.art}}" alt="player art">
+                    </a>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <p>Name: {{player.name}}</p>
                             </li>
                             <li class="list-group-item">
-                                <p>Class: {{player.class.name}}</p>
+                                <p>Class: {{player.class.title}}</p>
                             </li>
                             <li class="list-group-item">
                                 <p>Level: {{player.level}}</p>
                             </li>
                         </ul>
                     </div>
-                </div>
+            </div>
         {{/each}}
 </div>

@@ -4,12 +4,7 @@ const { User, Player, Class, Weapon, Armor, Spell, PlayerWeapon } = require('../
 router.get('/', async (req, res) => {
     try {
         const dbPlayerData = await Player.findAll({
-            include: [
-                {
-                    model: Player,
-                    attributes: [ 'name', 'level', 'class_id'],
-                },
-            ],
+            include: [{model: Class}]
         });
 
         const players = dbPlayerData.map((player) =>
@@ -34,9 +29,10 @@ router.get('/players-page/:id', async (req,res) => {
         });
         
         const player = dbPlayerData.get({plain: true});
+        const spells = player.spells;
 
-        res.render('player', {player, loggedIn: req.session.loggedIn});
-        res.json(player)
+        res.render('player', {player, spells, loggedIn: req.session.loggedIn});
+        // res.json(player)
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
