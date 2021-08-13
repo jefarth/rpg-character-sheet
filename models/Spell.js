@@ -23,10 +23,10 @@ Spell.init(
         type: DataTypes.INTEGER,
         allowNull: true,
     },
-    character_id: {
+    player_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'character',
+        model: 'player',
         key: 'id',
       },
     },

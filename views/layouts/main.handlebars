@@ -20,9 +20,9 @@
                 </div>
                 <div class="col-8 d-flex justify-content-evenly">
                     <a class="btn btn-outline-light" id="battleBtn">Battle!</a>
-                    <a class="btn btn-outline-light" id="myCharsBtn">My Characters</a>
+                    <a class="btn btn-outline-light" id="myCharsBtn">My Players</a>
                     {{#if loggedIn}}
-                    <a class="btn btn-outline-light" id="newCharBtn">New Character</a>
+                    <a class="btn btn-outline-light" id="newCharBtn">New Player</a>
                     <a class="btn btn-outline-light" id="newWeaponBtn">New Weapon</a>
                     <a class="btn btn-outline-light" id="newArmorBtn">New Armor</a>
                     <button class="btn btn-outline-light" id="logoutBtn">Log out</button>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid bg-light py-3" style="height: 92vh;">
+        <div class="container-fluid py-3" style="height: 92vh; background-color: #b59a9a;">
             {{{body}}}
         </div>
     </main>
