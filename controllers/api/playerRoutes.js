@@ -59,7 +59,7 @@ router.get('/', async (req, res) => {
    
      const singlePlayerData = await Player.findOne({
         where: {
-            id: req.params.id
+        id: req.params.id
           },
       attributes: [
         'id',
