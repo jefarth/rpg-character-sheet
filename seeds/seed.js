@@ -11,6 +11,8 @@ const seedDatabase = async () => {
 
     await seedUserData();
 
+    await seedClass();
+    
     await seedPlayerData();
 
     await seedSpell();
@@ -18,8 +20,6 @@ const seedDatabase = async () => {
     await seedArmor();
 
     await seedWeapons();
-
-    await seedClass();
 
     process.exit(0);
 };

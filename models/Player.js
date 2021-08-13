@@ -35,27 +35,19 @@ Player.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    weapon_id: {
+    class_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'weapon',
+        model: 'class',
         key: 'id'
       }
     },
-    armor_id: {
-      type:DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'armor',
-        key: 'id'
-      }
-    },
-    spell: {
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'spell',
+        model: 'user',
         key: 'id'
       }
     },
@@ -68,22 +60,20 @@ Player.init(
     hooks: {
       // If no art is selected, choose a stock image
       beforeCreate: (newPlayerData) => {
-        if(newPlayerData.art === null) {
-          switch(newPlayerData.class_id) {
-            case 1:
-              newPlayerData.art = '/img/stock-rogue.jpg';
-              break;
-            case 2:
-              newPlayerData.art = '/img/stock-warlock.jpg';
-              break;
-            case 3:
-              newPlayerData.art = '/img/stock-warrior.jpg';
-              break;
-            default:
-              break;
-          }
-          return newPlayerData;
+        switch(newPlayerData.class_id) {
+          case 1:
+            newPlayerData.art = '/img/stock-rogue.jpg';
+            break;
+          case 2:
+            newPlayerData.art = '/img/stock-warlock.jpg';
+            break;
+          case 3:
+            newPlayerData.art = '/img/stock-warrior.jpg';
+            break;
+          default:
+            break;
         }
+        return newPlayerData;
       }
     },
     sequelize,

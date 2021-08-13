@@ -12,15 +12,19 @@ User.hasMany(Player, {
 
 Player.belongsTo(User, {
     foreignKey: 'id',
-    constraints: false,
 });
 
-Player.hasOne(Class, {
-    foreignKey: 'player_id'
+Class.hasMany(Player, {
+    foreignKey: 'class_id',
+});
+
+Player.belongsTo(Class, {
+    foreignKey: 'class_id'
 });
 
 Player.hasOne(Weapon, {
-    foreignKey: 'player_id'
+    foreignKey: 'player_id',
+    onDelete: 'CASCADE'
 });
 
 Player.hasOne(Armor, {
@@ -33,24 +37,16 @@ Player.hasMany(Spell, {
     onDelete: 'CASCADE'
 });
 
-Class.belongsTo(Player, {
+Weapon.belongsTo(Player, {
     foreignKey: 'player_id',
-    constraints: false,
 });
-
-// Weapon.belongsTo(Player, {
-//     foreignKey: 'player_id',
-//     constraints: false,
-// });
 
 Armor.belongsTo(Player, {
     foreignKey: 'player_id',
-    constraints: false,
 });
 
 Spell.belongsTo(Player, {
     foreignKey: 'player_id',
-    constraints: false,
 });
 
 module.exports = { User, Player, Class, Weapon, Armor, Spell };

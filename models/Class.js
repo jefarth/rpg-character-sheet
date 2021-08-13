@@ -23,13 +23,6 @@ Class.init(
         type: DataTypes.INTEGER,
         allowNull: true,
     },
-    player_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'player',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,

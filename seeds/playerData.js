@@ -11,9 +11,7 @@ const playerData = [
       base_atk: 20,
       base_def: 10,
       class_id: 1,
-      weapon_id: 2,
-      armor_id: 3,
-      spells: [1,2],
+      user_id: 1,
     },
   ];
 
