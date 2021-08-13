@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
   
     }
-  });
+});
 
   router.get('/:id', async (req, res) => {
  
@@ -59,7 +59,7 @@ router.get('/', async (req, res) => {
    
      const singlePlayerData = await Player.findOne({
         where: {
-            user_id: req.params.id
+            id: req.params.id
           },
       attributes: [
         'id',
@@ -110,14 +110,14 @@ router.get('/', async (req, res) => {
     try {
 
         const playerCreateData = await Player.create({
-            id: req.body.id,
             name: req.body.name,
-            level: req.session.level,
+            level: req.body.level,
             base_hp: req.body.base_hp,
             base_mana: req.body.base_mana,
             base_atk: req.body.base_atk,
             base_def: req.body.base_def,
             class_id: req.body.class_id,
+            user_id: req.body.user_id,
             art: req.body.art
           });
 
@@ -195,4 +195,4 @@ router.get('/', async (req, res) => {
 
   });
 
-  module.exports = router;
+module.exports = router;

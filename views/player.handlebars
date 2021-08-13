@@ -4,7 +4,7 @@
             <ul class="list-group shadow" id="basicInfo">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Basic Info</h3>
                 <li class="list-group-item">Name: {{player.name}}</li>
-                <li class="list-group-item">Class: {{player.class}}</li>
+                <li class="list-group-item">Class: {{player.class.title}}</li>
                 <li class="list-group-item">Level: {{player.level}}</li>
             </ul>
             <ul class="list-group shadow" id="baseStats">
@@ -28,45 +28,37 @@
             <div class="m-2 h-50 shadow bg-light" id="equipment">
                 <h2 class="text-center text-light bg-gradient p-2" id="equipHead" style="background-color: #751312;">Equpiment</h2>
                 <div id="equipmentList" class="px-2">
-                    <h3>Weapon: {{weapon.name}}</h3>
+                    <h3>Weapon: {{player.weapon.name}}</h3>
                     <ul>
                         <li>
-                            {{weapon.bonus_atk}}
+                            Bonus Attack: {{player.weapon.bonus_atk}}
                         </li>
                         <li>
-                            {{weapon.level_req}}
+                            Level Requirement: {{player.weapon.lvl_req}}
                         </li>
                     </ul>
-                    <h3>Armor: {{armor.name}}</h3>
+                    <h3>Armor: {{player.armor.name}}</h3>
                     <ul>
                         <li>
-                            {{armor.bonus_def}}
+                            Bonus Defense: {{player.armor.bonus_def}}
                         </li>
                         <li>
-                            {{armor.level_req}}
+                            Level Requirement: {{player.armor.lvl_req}}
                         </li>
                     </ul>
                 </div>
             </div>
-    
+            
             <div class="m-2 h-50 shadow bg-light" id="spells">
                 <h2 class="text-center text-light bg-gradient p-2" style="background-color: #751312;">Spells</h2>
                 <div id="spellsList" class="px-2">
-                    <h4>{{player.spell_1.name}}</h4>
+                    {{#each spells as |spell|}}
+                    <h4>{{spell.name}}</h4>
                     <ul>
-                        <li>{{player.spell_1.damage}}</li>
-                        <li>{{player.spell_1.mana_cost}}</li>
+                        <li>Damage: {{spell.damage}}</li>
+                        <li>Mana Cost: {{spell.mana_cost}}</li>
                     </ul>
-                    <h4>{{player.spell_2.name}}</h4>
-                    <ul>
-                        <li>{{player.spell_2.damage}}</li>
-                        <li>{{player.spell_2.mana_cost}}</li>
-                    </ul>
-                    <h4>{{player.spell_3.name}}</h4>
-                    <ul>
-                        <li>{{player.spell_3.damage}}</li>
-                        <li>{{player.spell_3.mana_cost}}</li>
-                    </ul>
+                    {{/each}}
                 </div>
             </div>
     
