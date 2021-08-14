@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Player, Class, Weapon, Armor, Spell, PlayerWeapon } = require('../models');
+const { Player, Class, Weapon, Armor, Spell } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
@@ -25,7 +25,12 @@ router.get('/', async (req, res) => {
 router.get('/players-page/:id', async (req,res) => {
     try {
         const dbPlayerData = await Player.findByPk(req.params.id, {
-            include: [{model: Weapon}, {model: Armor}, {model: Spell}, {model: Class}]
+            include: [
+                {model: Weapon}, 
+                {model: Armor}, 
+                {model: Spell}, 
+                {model: Class}
+            ]
         });
         
         const player = dbPlayerData.get({plain: true});

@@ -12,16 +12,16 @@ Spell.init(
       autoIncrement: true,
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     mana_cost: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     damage: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     player_id: {
       type: DataTypes.INTEGER,
