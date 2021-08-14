@@ -1,9 +1,5 @@
 <div id="playerPage" class="container-fluid d-flex flex-row" style="height: 100%;">  
-    
-    <div id="statsContainer" class="d-flex flex-column justify-content-around p-2 m-2 col-2">
-        <ul class="list-group shadow" id="basicInfo">
-            <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Basic Info</h3>
-        {{!-- Stats --}}
+
         <div id="statsContainer" class="d-flex flex-column justify-content-around p-2 m-2 col-2">
             <ul class="list-group shadow" id="basicInfo">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Basic Info</h3>
@@ -18,20 +14,18 @@
                 <li class="list-group-item">HP: <span id="baseHp">{{player.base_hp}}</span></li>
                 <li class="list-group-item">Mana: <span id="baseMana">{{player.base_mana}}</span></li>
             </ul>
-            <h3>Armor: {{player.armor.name}}</h3>
-            <ul>
-                <li>
-                    Bonus Defense: {{player.armor.bonus_def}}
-                </li>
-                <li>
-                    Level Requirement: {{player.armor.lvl_req}}
-                </li>
+            <ul class="list-group shadow" id="actualStats">
+                <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Actual Stats</h3>
+                <li class="list-group-item">Attack: <span id="actualAtk"></span></li>
+                <li class="list-group-item">Defense: <span id="actualDef"></span></li>
+                <li class="list-group-item">HP: <span id="actualHp"></span></li>
+                <li class="list-group-item">Mana: <span id="actualMana"></span></li>
             </ul>
             <button class="btn text-light bg-gradient shadow" style="background-color: #751312;">Save Changes</button>
         </div>
-    {{!-- Items and Spells --}}
+    
         <div id="itemsAndSpells" class="d-flex flex-column mx-3 justify-content-around col-3">
-            {{!-- Items --}}
+            
             <div class="m-2 h-50 shadow bg-light" id="equipment">
                 <h2 class="text-center text-light bg-gradient p-2" id="equipHead" style="background-color: #751312;">Equipment</h2>
                 <div id="equipmentList" class="px-2 d-flex flex-column">
@@ -65,7 +59,7 @@
 
                 </div>
             </div>
-            {{!-- Spells --}}
+            
             <div class="m-2 h-50 shadow bg-light" id="spells">
                 <h2 class="text-center text-light bg-gradient p-2" style="background-color: #751312;">Spells</h2>
                 <div id="spellsList" class="px-2">
@@ -78,6 +72,7 @@
                     {{/each}}
                 </div>
             </div>
+    
         </div>
     
         <div id="artContainer" class="container m-2 d-flex flex-column justify-content-center">
