@@ -88,6 +88,7 @@ const deleteCharacter = async () => {
     });
 
     if (response.ok) {
+      alert('Character deleted.')
       document.location.replace(`/`);
     } else {
       alert(response.statusText);
