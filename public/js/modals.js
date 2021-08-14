@@ -59,27 +59,43 @@ const saveArmor = async () => {
 }
 
 const saveSpell = async () => {
-    // Get user inputted data
-    const name = $spellNameInput.value.trim();
-    const mana_cost = $manaCostInput.value;
-    const damage = $dmgValueInput.value;
+  // Get user inputted data
+  const name = $spellNameInput.value.trim();
+  const mana_cost = $manaCostInput.value;
+  const damage = $dmgValueInput.value;
+  // Fetch POST to the armor db
+  const response = await fetch(`/api/spell`, {
+      method: 'POST',
+      body: JSON.stringify({
+        name, mana_cost, damage, player_id
+      }),
+      headers: {'Content-Type': 'application/json'}
+  });
+  
+  if (response.ok) {
+      document.location.replace(`/players-page/${player_id}`);
+  } else {
+    alert(response.statusText);
+  }
+}
 
-    // Fetch POST to the armor db
-    const response = await fetch(`/api/spell`, {
-        method: 'POST',
-        body: JSON.stringify({
-          name, mana_cost, damage, player_id
-        }),
-        headers: {'Content-Type': 'application/json'}
+const deleteCharacter = async () => {
+  if(confirm('Are you sure you want to delete this character?')) {
+
+    const response = await fetch(`/api/player/${player_id}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ player_id })
     });
-    
+
     if (response.ok) {
-        document.location.replace(`/players-page/${player_id}`);
+      alert('Character deleted.')
+      document.location.replace(`/`);
     } else {
       alert(response.statusText);
     }
+  }
+  return;
 }
-
 
 document
     .getElementById('wpnModalSave')
@@ -89,6 +105,10 @@ document
     .getElementById('armModalSave')
     .addEventListener('click', saveArmor);
 
-    document
+document
     .getElementById('spellModalSave')
     .addEventListener('click', saveSpell);
+
+document
+    .getElementById('deleteCharBtn')
+    .addEventListener('click', deleteCharacter);

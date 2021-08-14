@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
     });
   
     const players = playerData.map(player => player.get({ plain: true }));
-    res.render('player-page', { players, loggedIn: true });
+    res.render('player', { players, loggedIn: true });
   
   } catch (err) {   
     console.log(err);
@@ -97,8 +97,8 @@ router.post('/', async (req, res)=> {
 });
 
 router.put('/art', async (req, res) => {
-  console.log(chalk.blue.bold('IM HIT ARGGGGGGGGG'))
   try {
+    console.log(chalk.blue.bold('IM HIT ARGGGGGGGGG'))
     const playerToUpdate = await Player.update(
       {
         art: req.body.art,
@@ -151,7 +151,7 @@ router.put('/:id', async (req, res)=> {
 
 router.delete('/:id', async (req, res)=> {
   try {
-    const playerDeleteData = await Player.delete({
+    const playerDeleteData = await Player.destroy({
       where: {
         id: req.params.id
       }
@@ -162,7 +162,7 @@ router.delete('/:id', async (req, res)=> {
       return;
     }
 
-    res.json(playerDeleteData);
+    res.json({ message: 'Character destroyed'});
     
   } catch (err) {
     console.log(err);

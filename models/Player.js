@@ -61,13 +61,13 @@ Player.init(
       // If no art is selected, choose a stock image
       beforeCreate: (newPlayerData) => {
         switch(newPlayerData.dataValues.class_id) {
-          case '1':
+          case 1:
             newPlayerData.dataValues.art = '/img/stock-rogue.jpg';
             return newPlayerData;
-          case '2':
+          case 2:
             newPlayerData.dataValues.art = '/img/stock-warlock.jpg';
             return newPlayerData;
-          case '3':
+          case 3:
             newPlayerData.dataValues.art = '/img/stock-warrior.jpg';
             return newPlayerData;
           default:

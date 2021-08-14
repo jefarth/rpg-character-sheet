@@ -84,6 +84,19 @@ router.get('/armor-page/:id', async (req,res) => {
     }
 });
 
+router.get('/create', async (req,res) => {
+    try {
+        const dbClassData = await Class.findAll();
+
+        const classes = dbClassData.map(entry => entry.get({plain:true}));
+
+        res.render('newplayer', {classes, loggedIn: req.session.loggedIn});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 router.get('/spell-page/:id', async (req,res) => {
     try {
         const dbSpellData = await Spell.findAll();

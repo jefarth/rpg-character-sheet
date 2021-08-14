@@ -25,7 +25,7 @@ const saveArt = async (event) => {
     const art = $imgURL.value
     
     const response = await fetch(`/api/player/art`, {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify({
           art,
           player_id
