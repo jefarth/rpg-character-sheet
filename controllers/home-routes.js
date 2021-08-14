@@ -37,7 +37,6 @@ router.get('/players-page/:id', async (req,res) => {
         const spells = player.spells;
 
         res.render('player', {player, spells, loggedIn: req.session.loggedIn});
-        // res.json(player)
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

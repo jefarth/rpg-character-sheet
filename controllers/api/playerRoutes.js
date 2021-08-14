@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Player, Class, Weapon, Armor } = require('../../models');
+const { Player, Class, Weapon, Armor, Spell } = require('../../models');
 const sequelize = require('../../config/connection');
 
 router.get('/', async (req, res) => {
@@ -49,45 +49,24 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const singlePlayerData = await Player.findOne({
-      where: {
-        id: req.params.id
-      },
-      attributes: [
-        'id',
-        'name',
-        'level',
-        'base_hp',
-        'base_mana',
-        'base_atk',
-        'base_def',
-        'class_id',
-        'art',
-        'created_at'
-      ],
+    const singlePlayerData = await Player.findByPk(req.params.id, {
       include: [
-        {
-          model: Class,
-          attributes: ['title', 'bonus_hp', 'bonus_mana'],
-        
-        },
-        {
-          model: Weapon,
-          attributes: ['name', 'bonus_atk', 'lvl_req']
-        },
-        {
-          model: Armor,
-          attributes: ['name', 'bonus_def', 'lvl_req']
-        }   
+          {model: Weapon}, 
+          {model: Armor}, 
+          {model: Spell}, 
+          {model: Class}
       ]
     });
-  
-    if (!singlePlayerData) {
-        res.status(404).json({ message: 'No player found with this id' });
-        return;
-      }
 
-    res.json(singlePlayerData);
+    if (!singlePlayerData) {
+      res.status(404).json({ message: 'No player found with this id' });
+      return;
+    }
+  
+    const player = singlePlayerData.get({plain: true});
+    const spells = player.spells;
+  
+    res.render('player', {player, spells, loggedIn: req.session.loggedIn});
    
   } catch (err) {
     console.log(err);

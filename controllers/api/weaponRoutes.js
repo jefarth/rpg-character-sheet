@@ -60,7 +60,8 @@ router.post('/', async (req, res)=> {
     const weaponCreateData = await Weapon.create({
       name: req.body.name,
       bonus_atk: req.body.bonus_atk,
-      lvl_req: req.body.lvl_req
+      lvl_req: req.body.lvl_req,
+      player_id: req.body.player_id
     });
 
     res.json(weaponCreateData);
