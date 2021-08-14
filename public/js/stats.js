@@ -14,8 +14,6 @@ const $actualManaSpan = document.getElementById('actualMana');
 const calculateStats = () => {
     const bonusAtk = Number($bonusAtkSpan.innerText);
     const bonusDef = Number($bonusDefSpan.innerText);
-    
-    console.log(typeof bonusAtk, bonusDef);
 
     $actualAtkSpan.innerText = bonusAtk + baseAtk;
     $actualDefSpan.innerText = bonusDef + baseDef;
