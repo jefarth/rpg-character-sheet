@@ -119,8 +119,7 @@ router.get('/', async (req, res) => {
             base_atk: req.body.base_atk,
             base_def: req.body.base_def,
             class_id: req.body.class_id,
-            user_id: req.body.user_id,
-            art: req.body.art
+            user_id: req.session.user_id,
           });
 
           res.json(playerCreateData);

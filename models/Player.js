@@ -71,6 +71,7 @@ Player.init(
             newPlayerData.dataValues.art = '/img/stock-warrior.jpg';
             return newPlayerData;
           default:
+            newPlayerData.dataValues.art = '/img/stock.jpg';
             return newPlayerData;
         }
       }

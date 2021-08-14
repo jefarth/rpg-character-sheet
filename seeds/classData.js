@@ -19,6 +19,12 @@ const classData = [
     bonus_hp: 15,
     bonus_mana: 5 
   },
+  {
+    id: 4,
+    title: "Monk",
+    bonus_hp: 12,
+    bonus_mana: 8
+  }
 ];
 
 const seedClass = () => Class.bulkCreate(classData);
