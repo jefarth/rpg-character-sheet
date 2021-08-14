@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
     });
   
     const players = playerData.map(player => player.get({ plain: true }));
-    res.render('playerPage', { players, loggedIn: true });
+    res.render('player-page', { players, loggedIn: true });
   
     } catch (err) {
       

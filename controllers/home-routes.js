@@ -125,6 +125,19 @@ router.get('/class-page/:id', async (req,res) => {
     }
 });
 
+router.get('/spell-page/:id', async (req,res) => {
+    try {
+        const dbSpellData = await Spell.findAll();
+
+        const spells = dbSpellData.get({plain: true});
+
+        res.render('spell-page', {spells, loggedIn: req.session.loggedIn});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
       res.redirect('/');

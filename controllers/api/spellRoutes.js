@@ -1,28 +1,27 @@
 const router = require('express').Router();
-const { Armor } = require('../../models');
+const { Spell } = require('../../models');
 const sequelize = require('../../config/connection');
 
 router.get('/', async (req, res) => {
  
   try {
    
-     const armorData = await Armor.findAll({
+     const spellData = await Spell.findAll({
         where: {
             user_id: req.session.user_id
           },
       attributes: [
         'name',
-        'bonus_def',
-        'lvl_req',
-        'player_id',
+        'mana_cost',
+        'damage',
         'created_at'
         
       ],
       order: [['created_at', 'DESC']],
     });
   
-    const armor = armorData.map(armor => armor.get({ plain: true }));
-    res.render('armor-page', { armor, loggedIn: true });
+    const spell = spellData.map(spell => spell.get({ plain: true }));
+    res.render('spell-page', { spell, loggedIn: true });
   
     } catch (err) {
       
@@ -38,25 +37,24 @@ router.get('/', async (req, res) => {
  
     try {
    
-     const singleArmorData = await Armor.findOne({
+     const singleSpellData = await Spell.findOne({
         where: {
             id: req.params.id
           },
       attributes: [
         'name',
-        'bonus_def',
-        'lvl_req',
-        'player_id',
+        'mana_cost',
+        'damage',
         'created_at'
       ],
     });
   
-    if (!singleArmorData) {
-        res.status(404).json({ message: 'No armor found with this id' });
+    if (!singleSpellData) {
+        res.status(404).json({ message: 'No spell found with this id' });
         return;
       }
 
-    res.json(singleArmorData);
+    res.json(singleSpellData);
    
     } catch (err) {
       
@@ -72,13 +70,13 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const armorCreateData = await Armor.create({
+        const spellCreateData = await Spell.create({
           name: req.body.name,
-          bonus_def: req.body.bonus_def,
-          lvl_req: req.body.lvl_req
+          mana_cost: req.body.mana_cost,
+          damage: req.body.damage
           });
 
-          res.json(armorCreateData);
+          res.json(spellCreateData);
         
     } catch (err) {
 
@@ -93,11 +91,11 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const armorUpdateData = await Armor.update({
+        const spellUpdateData = await Spell.update({
            
             name: req.body.name,
-            bonus_def: req.body.bonus_def,
-            lvl_req: req.body.lvl_req
+            mana_cost: req.body.mana_cost,
+            damage: req.body.damage
            
             },
             {
@@ -106,12 +104,12 @@ router.get('/', async (req, res) => {
                   }
             });
 
-            if(!armorUpdateData) {
-                res.status(404).json({ message: 'No armor found with this id' });
+            if(!spellUpdateData) {
+                res.status(404).json({ message: 'No spell found with this id' });
                 return;
               }
 
-          res.json(armorUpdateData);
+          res.json(spellUpdateData);
         
     } catch (err) {
 
@@ -128,18 +126,18 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const armorDeleteData = await Armor.delete({
+        const spellDeleteData = await Spell.delete({
                 where: {
                     id: req.params.id
                   }
             });
 
-            if(!armorDeleteData) {
-                res.status(404).json({ message: 'No armor found with this id' });
+            if(!spellDeleteData) {
+                res.status(404).json({ message: 'No spell found with this id' });
                 return;
               }
 
-          res.json(armorDeleteData);
+          res.json(spellDeleteData);
         
     } catch (err) {
 
