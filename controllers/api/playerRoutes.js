@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Player, Class, Weapon, Armor, Spell } = require('../../models');
 const sequelize = require('../../config/connection');
+const chalk = require('chalk');
 
 router.get('/', async (req, res) => {
   try {
@@ -94,6 +95,28 @@ router.post('/', async (req, res)=> {
     res.status(500).json(err);  
   }
 });
+
+router.put('/art', async (req, res) => {
+  console.log(chalk.blue.bold('IM HIT ARGGGGGGGGG'))
+  try {
+    const playerToUpdate = await Player.update(
+      {
+        art: req.body.art,
+      },
+      {
+        where: {
+          id: req.body.player_id
+        }
+      }
+    );
+
+    res.status(200).json({ message: 'Player art updated.'})
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 router.put('/:id', async (req, res)=> {
   try {

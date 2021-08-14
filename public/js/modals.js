@@ -6,9 +6,13 @@ const $wpnNameInput = document.getElementById('wpnNameInput');
 const $atkValInput = document.getElementById('atkValInput');
 const $wpnLvlReqInput = document.getElementById('wpnLvlReqInput');
 
+const $spellNameInput = document.getElementById('spellNameInput');
+const $manaCostInput = document.getElementById('manaCostInput');
+const $dmgValueInput = document.getElementById('dmgValueInput');
+
 // get the character id number for later use
-const urlArr = window.location.href.split('/');
-const player_id = urlArr[urlArr.length - 1];
+// const urlArr = window.location.href.split('/');
+// const player_id = urlArr[urlArr.length - 1];
 
 const saveWeapon = async () => {
     // Get user inputted data
@@ -54,6 +58,28 @@ const saveArmor = async () => {
     }
 }
 
+const saveSpell = async () => {
+    // Get user inputted data
+    const name = $spellNameInput.value.trim();
+    const mana_cost = $manaCostInput.value;
+    const damage = $dmgValueInput.value;
+
+    // Fetch POST to the armor db
+    const response = await fetch(`/api/spell`, {
+        method: 'POST',
+        body: JSON.stringify({
+          name, mana_cost, damage, player_id
+        }),
+        headers: {'Content-Type': 'application/json'}
+    });
+    
+    if (response.ok) {
+        document.location.replace(`/players-page/${player_id}`);
+    } else {
+      alert(response.statusText);
+    }
+}
+
 
 document
     .getElementById('wpnModalSave')
@@ -62,3 +88,7 @@ document
 document
     .getElementById('armModalSave')
     .addEventListener('click', saveArmor);
+
+    document
+    .getElementById('spellModalSave')
+    .addEventListener('click', saveSpell);
