@@ -19,12 +19,9 @@
                     <a class="navbar-brand" href="/">RPG Database</a>
                 </div>
                 <div class="col-8 d-flex justify-content-evenly">
-                    <a class="btn btn-outline-light" id="battleBtn">Battle!</a>
                     <a class="btn btn-outline-light" id="myCharsBtn">My Players</a>
                     {{#if loggedIn}}
-                    <a class="btn btn-outline-light" id="newCharBtn">New Player</a>
-                    <a class="btn btn-outline-light" id="newWeaponBtn">New Weapon</a>
-                    <a class="btn btn-outline-light" id="newArmorBtn">New Armor</a>
+                    <a class="btn btn-outline-light" href="/create" id="newCharBtn">New Player</a>
                     <button class="btn btn-outline-light" id="logoutBtn">Log out</button>
                     {{else}}
                     <a id="loginBtn" href="/login" class="btn btn-outline-light">Log in</a> 
