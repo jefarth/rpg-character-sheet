@@ -18,14 +18,6 @@ router.get('/', async (req, res) => {
       order: [['created_at', 'DESC']],
     });
     const armor = armorData.map(armor => armor.get({ plain: true }));
-<<<<<<< HEAD
-    res.render('armorPage', { armor, loggedIn: true });
-
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-=======
     res.render('armor-page', { armor, loggedIn: true });
   
     } catch (err) {
@@ -34,7 +26,6 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
   
     }
->>>>>>> main
 });
 
 router.get('/:id', async (req, res) => {
