@@ -1,7 +1,7 @@
 <div class="container-fluid mx-0 d-flex flex-wrap justify-content-center">
     {{#each players as |player|}}
         <div class="card player-card ms-4 mb-4 shadow" style="width: 18rem;">
-            <a href="/players-page/{{player.id}}">
+            <a href="api/player/{{player.id}}">
                 <img class="card-img-top" src="{{player.art}}" alt="player art">
             </a>
             <div class="card-body d-flex align-items-end">

@@ -51,12 +51,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const singlePlayerData = await Player.findByPk(req.params.id, {
-      include: [
-          {model: Weapon}, 
-          {model: Armor}, 
-          {model: Spell}, 
-          {model: Class}
-      ]
+      include: [{model: Weapon}, {model: Armor}, {model: Spell}, {model: Class}]
     });
 
     if (!singlePlayerData) {
