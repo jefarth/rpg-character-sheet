@@ -110,6 +110,7 @@ router.get('/', async (req, res) => {
   router.post('/', async (req, res)=> {
 
     try {
+      console.log(req.session);
 
         const playerCreateData = await Player.create({
             name: req.body.name,

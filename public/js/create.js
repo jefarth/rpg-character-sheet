@@ -44,12 +44,12 @@ const saveCharacter = async (event) => {
         body: JSON.stringify({
             name, level, base_atk, base_def, base_hp, base_mana, class_id
         }),
-        headers: { 'Content-Type': 'json'}
+        headers: { 'Content-Type': 'application/json'}
 
     });
 
     if (response.ok) {
-        document.location.replace('/api/player')
+        document.location.replace('/')
     } else {
         alert('Something went wrong... Try again.')
     }
