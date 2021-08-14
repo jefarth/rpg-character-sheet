@@ -6,7 +6,8 @@ const $imgCancelBtn = document.getElementById('imgCancel');
 
 // get the character id number for later use
 const urlArr = window.location.href.split('/');
-const player_id = urlArr[urlArr.length - 1];
+const raw_player_id = urlArr[urlArr.length - 1];
+const player_id = raw_player_id.replace('?', '');
 
 const showArtForm = () => {
     $imgFormShow.classList.add('d-none');
@@ -34,7 +35,7 @@ const saveArt = async (event) => {
     });
     
     if (response.ok) {
-      document.location.replace(`/players-page/${player_id}`);
+      document.location.replace(`/api/player/${player_id}`);
     } else {
       alert(response.statusText);
     }
