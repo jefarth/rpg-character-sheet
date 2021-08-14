@@ -28,7 +28,7 @@
             
             <div class="m-2 h-50 shadow bg-light" id="equipment">
                 <h2 class="text-center text-light bg-gradient p-2" id="equipHead" style="background-color: #751312;">Equipment</h2>
-                <div id="equipmentList" class="px-2 d-flex flex-column justify-content-between">
+                <div id="equipmentList" class="px-2 d-flex flex-column">
                     {{#if player.weapon}}
                     <h3 id="{{player.weapon.id}}">Weapon: {{player.weapon.name}}</h3>
                     <ul>
@@ -40,7 +40,7 @@
                         </li>
                     </ul>
                     {{else}}
-                    <button id="newWepnBtn" class="btn text-light bg-gradient" style="background-color: #751312;">New Weapon</button>
+                    <button id="newWepnBtn" class="btn text-light bg-gradient" data-bs-toggle="modal" data-bs-target="#weaponModal" style="background-color: #751312;">New Weapon</button>
                     {{/if}}
 
                     {{#if player.armor}}
@@ -54,7 +54,7 @@
                         </li>
                     </ul>
                     {{else}}
-                    <button id="newArmorBtn" class="btn text-light bg-gradient" style="background-color: #751312;">New Armor</button>
+                    <button id="newArmorBtn" class="btn text-light bg-gradient" data-bs-toggle="modal" data-bs-target="#armorModal" style="background-color: #751312;">New Armor</button>
                     {{/if}}
 
                 </div>
@@ -90,5 +90,74 @@
     </div>
 </div>
 
+<div class="modal fade" id="weaponModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create New Weapon</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group mb-3">
+                <label for="wpnNameInput" class="form-label">Name</label>
+                <input type="text" id="wpnNameInput" class="form-control" placeholder="Weapon name">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="wpnLvlReqInput" class="form-label">Level Requirement</label>
+                    <input type="number" id="wpnLvlReqInput" class="form_control" min="1" placeholder="1">
+                </div>
+                <div class="col-6">
+                    <label for="atkValInput" class="form-label">Attack Value</label>
+                    <input type="number" id="atkValInput" class="form_control" min="1" placeholder="1">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button id="wpnModalSave" type="button" class="btn text-light bg-gradient" style="background-color: #751312;">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="armorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create New Armor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group mb-3">
+                <label for="armorNameInput" class="form-label">Name</label>
+                <input type="text" id="armorNameInput" class="form-control" placeholder="Armor name">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="armorLvlReqInput" class="form-label">Level Requirement</label>
+                    <input type="number" id="armorLvlReqInput" class="form_control" min="1" placeholder="1">
+                </div>
+                <div class="col-6">
+                    <label for="defValInput" class="form-label">Defense Value</label>
+                    <input type="number" id="defValInput" class="form_control" min="1" placeholder="1">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button id="armModalSave" type="button" class="btn text-light bg-gradient" style="background-color: #751312;">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script src="/js/stats.js"></script>
 <script src="/js/art.js"></script>
+<script src="/js/modals.js"></script>
