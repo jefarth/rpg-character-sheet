@@ -23,27 +23,28 @@ router.get('/', async (req, res) => {
 
 // Find only user created characters
 router.get('/dashboard', async (req, res) => {
-    if (!req.players) {
-        res.redirect('/create');
-    } else {
-        try {
-            const dbPlayerData = await Player.findAll({
-                where: {user_id: req.session.user_id},
-                include: [{model: Class}]
-            });
-
-            const players = dbPlayerData.map((player) =>
-                player.get({ plain: true})
-            );
-
-            res.render('homepage', {
-                players,
-                loggedIn: req.session.loggedIn,
-            });
-        } catch (err) {
-            console.log(err);
-            res.status(500).json(err);
+    try {
+        const dbPlayerData = await Player.findAll({
+            where: {user_id: req.session.user_id},
+            include: [{model: Class}]
+        });
+        console.log('I AM THE PLAYER DATA', dbPlayerData)
+        
+        if(!dbPlayerData) {
+            res.redirect('/create');
         }
+
+        const players = dbPlayerData.map((player) =>
+            player.get({ plain: true})
+        );
+
+        res.render('homepage', {
+            players,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
 });
 
