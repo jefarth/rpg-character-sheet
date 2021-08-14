@@ -30,7 +30,7 @@ const saveWeapon = async () => {
     });
     
     if (response.ok) {
-      document.location.replace(`/players-page/${player_id}`);
+      document.location.replace(`/api/player/${player_id}`);
     } else {
       alert(response.statusText);
     }
@@ -52,7 +52,7 @@ const saveArmor = async () => {
     });
     
     if (response.ok) {
-        document.location.replace(`/players-page/${player_id}`);
+        document.location.replace(`/api/player/${player_id}`);
     } else {
       alert(response.statusText);
     }
@@ -73,7 +73,7 @@ const saveSpell = async () => {
   });
   
   if (response.ok) {
-      document.location.replace(`/players-page/${player_id}`);
+      document.location.replace(`/api/player/${player_id}`);
   } else {
     alert(response.statusText);
   }

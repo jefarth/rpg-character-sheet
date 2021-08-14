@@ -19,8 +19,8 @@
                     <a class="navbar-brand ms-5" href="/">RPG Database</a>
                 </div>
                 <div class="col-8 d-flex justify-content-evenly">
-                    <a class="btn btn-outline-light" id="myCharsBtn">My Players</a>
                     {{#if loggedIn}}
+                    <a class="btn btn-outline-light" href="/dashboard" id="myCharsBtn">My Players</a>
                     <a class="btn btn-outline-light" href="/create" id="newCharBtn">New Player</a>
                     <button class="btn btn-outline-light" id="logoutBtn">Log out</button>
                     {{else}}
