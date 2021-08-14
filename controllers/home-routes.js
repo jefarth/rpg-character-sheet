@@ -21,6 +21,28 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Find only user created characters
+router.get('/dashboard', async (req, res) => {
+    try {
+        const dbPlayerData = await Player.findAll({
+            where: {user_id: req.session.user_id},
+            include: [{model: Class}]
+        });
+
+        const players = dbPlayerData.map((player) =>
+            player.get({ plain: true})
+        );
+
+        res.render('homepage', {
+            players,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 // Get all players the user created
 router.get('/players-page/:id', async (req,res) => {
     try {
@@ -43,47 +65,6 @@ router.get('/players-page/:id', async (req,res) => {
     }
 });
 
-// Gets all weapons
-router.get('/weapons-page/:id', async (req,res) => {
-    try {
-        const dbWeaponData = await Weapon.findAll({
-            include: [
-                {
-                    model: Weapon,
-                    attributes: ['id', 'name', 'bonus_atk', 'lvl_req'],
-                },
-            ],
-        });
-
-        const weapons = dbWeaponData.get({plain: true});
-
-        res.render('weapons-page', {weapons, loggedIn: req.session.loggedIn});
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);   
-    }
-});
-
-router.get('/armor-page/:id', async (req,res) => {
-    try {
-        const dbArmorData = await Armor.findAll({
-            include: [
-                {
-                    model: Armor,
-                    attributes: ['id', 'name', 'bonus_def', 'lvl_req'],
-                },
-            ],
-        });
-
-        const armor= dbArmorData.get({plain: true});
-
-        res.render('armor-page', {armor, loggedIn: req.session.loggedIn});
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
 router.get('/create', async (req,res) => {
     try {
         const dbClassData = await Class.findAll();
@@ -91,19 +72,6 @@ router.get('/create', async (req,res) => {
         const classes = dbClassData.map(entry => entry.get({plain:true}));
 
         res.render('newplayer', {classes, loggedIn: req.session.loggedIn});
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-router.get('/spell-page/:id', async (req,res) => {
-    try {
-        const dbSpellData = await Spell.findAll();
-
-        const spells = dbSpellData.get({plain: true});
-
-        res.render('spell-page', {spells, loggedIn: req.session.loggedIn});
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
