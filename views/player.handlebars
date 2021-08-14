@@ -21,7 +21,9 @@
                 <li class="list-group-item">HP: <span id="actualHp"></span></li>
                 <li class="list-group-item">Mana: <span id="actualMana"></span></li>
             </ul>
-            <button class="btn text-light bg-gradient shadow" style="background-color: #751312;">Save Changes</button>
+            {{#if loggedIn}}
+            <button id="deleteCharBtn" class="btn text-light bg-gradient shadow" style="background-color: #751312;">Delete Character</button>
+            {{/if}}
         </div>
     
         <div id="itemsAndSpells" class="d-flex flex-column mx-3 justify-content-around col-3">

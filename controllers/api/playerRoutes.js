@@ -151,7 +151,7 @@ router.put('/:id', async (req, res)=> {
 
 router.delete('/:id', async (req, res)=> {
   try {
-    const playerDeleteData = await Player.delete({
+    const playerDeleteData = await Player.destroy({
       where: {
         id: req.params.id
       }
@@ -162,7 +162,7 @@ router.delete('/:id', async (req, res)=> {
       return;
     }
 
-    res.json(playerDeleteData);
+    res.json({ message: 'Character destroyed'});
     
   } catch (err) {
     console.log(err);
