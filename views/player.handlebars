@@ -21,14 +21,16 @@
                 <li class="list-group-item">HP: <span id="actualHp"></span></li>
                 <li class="list-group-item">Mana: <span id="actualMana"></span></li>
             </ul>
+            <button class="btn text-light bg-gradient shadow" style="background-color: #751312;">Save Changes</button>
         </div>
     
         <div id="itemsAndSpells" class="d-flex flex-column mx-3 justify-content-around col-3">
             
             <div class="m-2 h-50 shadow bg-light" id="equipment">
-                <h2 class="text-center text-light bg-gradient p-2" id="equipHead" style="background-color: #751312;">Equpiment</h2>
-                <div id="equipmentList" class="px-2">
-                    <h3>Weapon: {{player.weapon.name}}</h3>
+                <h2 class="text-center text-light bg-gradient p-2" id="equipHead" style="background-color: #751312;">Equipment</h2>
+                <div id="equipmentList" class="px-2 d-flex flex-column justify-content-between">
+                    {{#if player.weapon}}
+                    <h3 id="{{player.weapon.id}}">Weapon: {{player.weapon.name}}</h3>
                     <ul>
                         <li>
                             Bonus Attack: <span id="bonusAtk">{{player.weapon.bonus_atk}}</span>
@@ -37,7 +39,12 @@
                             Level Requirement: {{player.weapon.lvl_req}}
                         </li>
                     </ul>
-                    <h3>Armor: {{player.armor.name}}</h3>
+                    {{else}}
+                    <button id="newWepnBtn" class="btn text-light bg-gradient" style="background-color: #751312;">New Weapon</button>
+                    {{/if}}
+
+                    {{#if player.armor}}
+                    <h3 id="{{player.armor.id}}">Armor: {{player.armor.name}}</h3>
                     <ul>
                         <li>
                             Bonus Defense: <span id="bonusDef">{{player.armor.bonus_def}}</span>
@@ -46,6 +53,10 @@
                             Level Requirement: {{player.armor.lvl_req}}
                         </li>
                     </ul>
+                    {{else}}
+                    <button id="newArmorBtn" class="btn text-light bg-gradient" style="background-color: #751312;">New Armor</button>
+                    {{/if}}
+
                 </div>
             </div>
             
@@ -64,10 +75,20 @@
     
         </div>
     
-        <div id="artContainer" class="container-fluid m-2 d-flex justify-content-center" style="height: auto;">
-            <img class="img-fluid h-100 shadow-lg" src="{{player.art}}" alt="player_art">
+        <div id="artContainer" class="container m-2 d-flex flex-column justify-content-center">
+            <img id="playerArt" src="{{player.art}}" alt="player_art" style="max-height: 100%; object-fit: contain">
+            <button id="showImgForm" class="btn text-light bg-gradient mt-2" style="background-color: #751312;">New Art</button>
+            <form id="imgForm" class="mt-2 d-none">
+                <div class="input-group">
+                    <button id="imgSave" class="btn text-light bg-gradient" style="background-color: #751312;">Save</button>
+                    <input id="imgUrl" type="text" class="form-control" placeholder="Image URL">
+                    <button id="imgCancel" class="btn text-light bg-gradient" style="background-color: #751312;">Cancel</button>
+                </div>
+            </form>
         </div>
+
     </div>
 </div>
 
 <script src="/js/stats.js"></script>
+<script src="/js/art.js"></script>
