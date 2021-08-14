@@ -44,6 +44,38 @@ router.get('/players-page/:id', async (req,res) => {
     }
 });
 
+router.get('/create/', async (req,res) => {
+    try {
+        const dbPlayerData = await Player.findAll ({
+            where: {
+                user_id: req.session.user_id
+              },
+            attributes: [
+                'id',
+                'name',
+                'level',
+                'base_hp',
+                'base_mana',
+                'base_atk',
+                'base_def',
+                'class_id',
+                'art',
+                'created_at'
+              ],
+            include: [{model: Weapon}, {model: Armor}, {model: Spell}, {model: Class}]
+        });
+        
+        const player = dbPlayerData.map(player => player.get({plain: true}));
+        const spells = player.spells;
+
+        res.render('create-player', {player, spells, loggedIn: req.session.loggedIn});
+        // res.json(player)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 // Gets all weapons
 router.get('/weapons-page/:id', async (req,res) => {
     try {
@@ -92,6 +124,19 @@ router.get('/class-page/:id', async (req,res) => {
         const classes = dbClassData.get({plain: true});
 
         res.render('class-page', {classes, loggedIn: req.session.loggedIn});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/spell-page/:id', async (req,res) => {
+    try {
+        const dbSpellData = await Spell.findAll();
+
+        const spells = dbSpellData.get({plain: true});
+
+        res.render('spell-page', {spells, loggedIn: req.session.loggedIn});
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

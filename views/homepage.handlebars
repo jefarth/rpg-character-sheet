@@ -1,4 +1,4 @@
-<div class="container p-5 d-flex flex-wrap">
+<div class="container p-5 d-flex flex-wrap"></div>
     {{#each players as |player|}}
         <div class="card player-card ms-4 mb-4 shadow" style="width: 18rem;">
             <a href="/players-page/{{player.id}}">
@@ -17,6 +17,13 @@
                         <p>Level: {{player.level}}</p>
                     </li>
                 </ul>
+            </div>
+               {{!-- Generate random name  --}}
+            <div>
+                <p>
+                    <button id="generateName">Rand Name: </button>
+                    <textarea id="insertName"></textarea>
+                </p>
             </div>
         </div>
     {{/each}}

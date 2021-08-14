@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
     });
   
     const players = playerData.map(player => player.get({ plain: true }));
-    res.render('playerPage', { players, loggedIn: true });
+    res.render('player-page', { players, loggedIn: true });
   
   } catch (err) { 
     console.log(err);
@@ -95,6 +95,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 router.post('/', async (req, res)=> {
   try {
     const playerCreateData = await Player.create({
@@ -116,6 +117,18 @@ router.post('/', async (req, res)=> {
     res.status(500).json(err); 
   }
 });
+=======
+        const playerCreateData = await Player.create({
+            name: req.body.name,
+            level: req.body.level,
+            base_hp: req.body.base_hp,
+            base_mana: req.body.base_mana,
+            base_atk: req.body.base_atk,
+            base_def: req.body.base_def,
+            class_id: req.body.class_id,
+            user_id: req.session.user_id,
+          });
+>>>>>>> main
 
 router.put('/:id', async (req, res)=> {
   try {

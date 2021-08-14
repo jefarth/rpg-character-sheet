@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     });
   
     const createdClass = classData.map(createdClass => createdClass.get({ plain: true }));
-    res.render('classPage', { createdClass, loggedIn: true });
+    res.render('class-page', { createdClass, loggedIn: true });
   
   } catch (err) {
     console.log(err);
