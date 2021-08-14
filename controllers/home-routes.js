@@ -43,28 +43,6 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
-// Get all players the user created
-router.get('/players-page/:id', async (req,res) => {
-    try {
-        const dbPlayerData = await Player.findByPk(req.params.id, {
-            include: [
-                {model: Weapon}, 
-                {model: Armor}, 
-                {model: Spell}, 
-                {model: Class}
-            ]
-        });
-        
-        const player = dbPlayerData.get({plain: true});
-        const spells = player.spells;
-
-        res.render('player', {player, spells, loggedIn: req.session.loggedIn});
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
 router.get('/create', async (req,res) => {
     try {
         const dbClassData = await Class.findAll();
