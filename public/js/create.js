@@ -5,6 +5,7 @@ const $atkInput = document.querySelector('#atkInput');
 const $defInput = document.querySelector('#defInput');
 const $hpInput = document.querySelector('#hpInput');
 const $manaInput = document.querySelector('#manaInput');
+const $levelInput = document.querySelector('#levelInput');
 
 const statFields = [$atkInput, $defInput, $hpInput, $manaInput];
 
@@ -29,6 +30,7 @@ const saveCharacter = async (event) => {
     const title = $classSelect.value;
     // Get form data
     const name = $nameInput.value.trim();
+    const level = $levelInput.value;
     const base_atk = $atkInput.value.trim();
     const base_def = $defInput.value.trim();
     const base_hp = $hpInput.value.trim();
@@ -40,7 +42,7 @@ const saveCharacter = async (event) => {
     const response = await fetch('/api/player', {
         method: 'POST',
         body: JSON.stringify({
-            name, base_atk, base_def, base_hp, base_mana, class_id
+            name, level, base_atk, base_def, base_hp, base_mana, class_id
         }),
         headers: { 'Content-Type': 'json'}
 

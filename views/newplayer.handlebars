@@ -1,5 +1,5 @@
 <div id="newPlayerPage" class="container-fluid my-4 p-3 rounded shadow text-light w-50" style="background-color: #751312;">
-    <form>
+    <form id="newPlayerForm">
         <h3>New Character Info</h3>
         <div class="form-group mb-4">
             <label class="form-label" for="nameInput">Name</label>
@@ -9,13 +9,21 @@
             </div>
         </div>
         <div class="form-group mb-4">
-            <label class="form-label" for="classSelect">Class</label>
-            <select class="form-select" id="classSelect">
-                <option selected>Select</option>
-                {{#each classes as |class|}}
-                <option id="{{class.title}}" class="{{class.id}}">{{class.title}}</option>
-                {{/each}}
-            </select>
+            <div class="row">
+                <div class="col-8">
+                    <label class="form-label" for="classSelect">Class</label>
+                    <select class="form-select" id="classSelect">
+                        <option selected>Select</option>
+                        {{#each classes as |class|}}
+                        <option id="{{class.title}}" class="{{class.id}}">{{class.title}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label class="form-label" for="levelInput">Level</label>
+                    <input type="number" id="levelInput" class="form-control" min="1" placeholder="1">
+                </div>
+            </div>
         </div>
         <div class="form-group m-b">
             <label class="form-label" for="statsGroup">Base Stats</label>
