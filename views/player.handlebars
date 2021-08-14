@@ -9,10 +9,10 @@
             </ul>
             <ul class="list-group shadow" id="baseStats">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Base Stats</h3>
-                <li class="list-group-item">Attack: {{player.base_atk}}</li>
-                <li class="list-group-item">Defense: {{player.base_def}}</li>
-                <li class="list-group-item">HP: {{player.base_hp}}</li>
-                <li class="list-group-item">Mana: {{player.base_mana}}</li>
+                <li class="list-group-item">Attack: <span id="baseAtk">{{player.base_atk}}</span></li>
+                <li class="list-group-item">Defense: <span id="baseDef">{{player.base_def}}</span></li>
+                <li class="list-group-item">HP: <span id="baseHp">{{player.base_hp}}</span></li>
+                <li class="list-group-item">Mana: <span id="baseMana">{{player.base_mana}}</span></li>
             </ul>
             <ul class="list-group shadow" id="actualStats">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Actual Stats</h3>
@@ -31,7 +31,7 @@
                     <h3>Weapon: {{player.weapon.name}}</h3>
                     <ul>
                         <li>
-                            Bonus Attack: {{player.weapon.bonus_atk}}
+                            Bonus Attack: <span id="bonusAtk">{{player.weapon.bonus_atk}}</span>
                         </li>
                         <li>
                             Level Requirement: {{player.weapon.lvl_req}}
@@ -40,7 +40,7 @@
                     <h3>Armor: {{player.armor.name}}</h3>
                     <ul>
                         <li>
-                            Bonus Defense: {{player.armor.bonus_def}}
+                            Bonus Defense: <span id="bonusDef">{{player.armor.bonus_def}}</span>
                         </li>
                         <li>
                             Level Requirement: {{player.armor.lvl_req}}
@@ -69,3 +69,5 @@
         </div>
     </div>
 </div>
+
+<script src="/js/stats.js"></script>
