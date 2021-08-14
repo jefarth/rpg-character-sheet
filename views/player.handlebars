@@ -21,7 +21,7 @@
                 <li class="list-group-item">HP: <span id="actualHp"></span></li>
                 <li class="list-group-item">Mana: <span id="actualMana"></span></li>
             </ul>
-            {{#if loggedIn}}
+            {{#if (matchUserId player user_id)}}
             <button id="deleteCharBtn" class="btn text-light bg-gradient shadow" style="background-color: #751312;">Delete Character</button>
             {{/if}}
         </div>
@@ -43,7 +43,7 @@
                     </ul>
                     {{else}}
 
-                    {{#if loggedIn}}
+                    {{#if (matchUserId player user_id)}}
                     <button id="newWepnBtn" class="btn text-light bg-gradient" data-bs-toggle="modal" data-bs-target="#weaponModal" style="background-color: #751312;">New Weapon</button>
                     {{/if}}
 
@@ -61,7 +61,7 @@
                     </ul>
                     {{else}}
 
-                    {{#if loggedIn}}
+                    {{#if (matchUserId player user_id)}}
                     <button id="newArmorBtn" class="btn text-light bg-gradient" data-bs-toggle="modal" data-bs-target="#armorModal" style="background-color: #751312;">New Armor</button>
                     {{/if}}
 
@@ -83,7 +83,7 @@
                     {{/each}}
                     {{else}}
 
-                    {{#if loggedIn}}
+                    {{#if (matchUserId player user_id)}}
                     <button id="newSpellBtn" class="btn text-light bg-gradient" data-bs-toggle="modal" data-bs-target="#spellModal" style="background-color: #751312;">New Spell</button>
                     {{/if}}
                     
@@ -95,7 +95,7 @@
     
         <div id="artContainer" class="container m-2 d-flex flex-column justify-content-center">
             <img id="playerArt" src="{{player.art}}" alt="player_art" style="max-height: 100%; object-fit: contain">
-            {{#if loggedIn}}
+            {{#if (matchUserId player user_id)}}
             <button id="showImgForm" class="btn text-light bg-gradient mt-2" style="background-color: #751312;">New Art</button>
             <form id="imgForm" class="mt-2 d-none">
                 <div class="input-group">
@@ -214,5 +214,7 @@
 
 
 <script src="/js/stats.js"></script>
+{{#if (matchUserId player user_id)}}
 <script src="/js/art.js"></script>
 <script src="/js/modals.js"></script>
+{{/if}}
