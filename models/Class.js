@@ -12,16 +12,16 @@ Class.init(
       autoIncrement: true,
     },
     title: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     bonus_hp: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     bonus_mana: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   {
