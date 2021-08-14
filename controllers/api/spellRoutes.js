@@ -58,7 +58,8 @@ router.post('/', async (req, res)=> {
     const spellCreateData = await Spell.create({
       name: req.body.name,
       mana_cost: req.body.mana_cost,
-      damage: req.body.damage
+      damage: req.body.damage,
+      player_id: req.body.player_id
     });
 
     res.json(spellCreateData);

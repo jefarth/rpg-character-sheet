@@ -61,7 +61,8 @@ router.post('/', async (req, res)=> {
     const armorCreateData = await Armor.create({
       name: req.body.name,
       bonus_def: req.body.bonus_def,
-      lvl_req: req.body.lvl_req
+      lvl_req: req.body.lvl_req,
+      player_id: req.body.player_id
     });
 
     res.json(armorCreateData);
