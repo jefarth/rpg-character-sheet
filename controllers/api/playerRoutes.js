@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
     const players = playerData.map(player => player.get({ plain: true }));
     res.render('player-page', { players, loggedIn: true });
   
-  } catch (err) { 
+  } catch (err) {   
     console.log(err);
     res.status(500).json(err);
   }
@@ -83,9 +83,9 @@ router.get('/:id', async (req, res) => {
     });
   
     if (!singlePlayerData) {
-      res.status(404).json({ message: 'No player found with this id' });
-      return;
-    }
+        res.status(404).json({ message: 'No player found with this id' });
+        return;
+      }
 
     res.json(singlePlayerData);
    
@@ -95,7 +95,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 router.post('/', async (req, res)=> {
   try {
     const playerCreateData = await Player.create({
@@ -106,33 +105,20 @@ router.post('/', async (req, res)=> {
       base_atk: req.body.base_atk,
       base_def: req.body.base_def,
       class_id: req.body.class_id,
-      user_id: req.body.user_id,
-      art: req.body.art
+      user_id: req.session.user_id,
     });
-    
+
     res.json(playerCreateData);
-    
+        
   } catch (err) {
     console.log(err);
-    res.status(500).json(err); 
+    res.status(500).json(err);  
   }
 });
-=======
-        const playerCreateData = await Player.create({
-            name: req.body.name,
-            level: req.body.level,
-            base_hp: req.body.base_hp,
-            base_mana: req.body.base_mana,
-            base_atk: req.body.base_atk,
-            base_def: req.body.base_def,
-            class_id: req.body.class_id,
-            user_id: req.session.user_id,
-          });
->>>>>>> main
 
 router.put('/:id', async (req, res)=> {
   try {
-    const playerUpdateData = await Player.update({
+    const playerUpdateData = await Player.update({ 
       name: req.body.name,
       level: req.session.level,
       base_hp: req.body.base_hp,
@@ -157,7 +143,7 @@ router.put('/:id', async (req, res)=> {
         
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);   
+    res.status(500).json(err); 
   }
 });
 
@@ -175,7 +161,7 @@ router.delete('/:id', async (req, res)=> {
     }
 
     res.json(playerDeleteData);
-        
+    
   } catch (err) {
     console.log(err);
     res.status(500).json(err);  
