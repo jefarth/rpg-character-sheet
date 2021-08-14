@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     });
   
     const weapons = weaponData.map(weapon => weapon.get({ plain: true }));
-    res.render('weaponPage', { weapons, loggedIn: true });
+    res.render('weapons-page', { weapons, loggedIn: true });
   
     } catch (err) {
       

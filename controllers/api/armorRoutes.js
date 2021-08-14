@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     });
   
     const armor = armorData.map(armor => armor.get({ plain: true }));
-    res.render('armorPage', { armor, loggedIn: true });
+    res.render('armor-page', { armor, loggedIn: true });
   
     } catch (err) {
       
