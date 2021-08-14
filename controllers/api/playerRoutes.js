@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
     const player = singlePlayerData.get({plain: true});
     const spells = player.spells;
   
-    res.render('player', {player, spells, loggedIn: req.session.loggedIn});
+    res.render('player', {player, spells, user_id: req.session.user_id, loggedIn: req.session.loggedIn});
    
   } catch (err) {
     console.log(err);
