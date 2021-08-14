@@ -1,9 +1,9 @@
 <div id="playerPage" class="container-fluid d-flex flex-row" style="height: 100%;">  
-    {{!-- Stats --}}
+    
     <div id="statsContainer" class="d-flex flex-column justify-content-around p-2 m-2 col-2">
         <ul class="list-group shadow" id="basicInfo">
             <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Basic Info</h3>
-
+        {{!-- Stats --}}
         <div id="statsContainer" class="d-flex flex-column justify-content-around p-2 m-2 col-2">
             <ul class="list-group shadow" id="basicInfo">
                 <h3 class="text-center text-light bg-gradient p-2 m-0" style="background-color: #751312;">Basic Info</h3>
@@ -28,9 +28,9 @@
                 </li>
             </ul>
         </div>
-    
+    {{!-- Items and Spells --}}
         <div id="itemsAndSpells" class="d-flex flex-column mx-3 justify-content-around col-3">
-            
+            {{!-- Items --}}
             <div class="m-2 h-50 shadow bg-light" id="equipment">
                 <h2 class="text-center text-light bg-gradient p-2" id="equipHead" style="background-color: #751312;">Equpiment</h2>
                 <div id="equipmentList" class="px-2">
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
             </div>
-            
+            {{!-- Spells --}}
             <div class="m-2 h-50 shadow bg-light" id="spells">
                 <h2 class="text-center text-light bg-gradient p-2" style="background-color: #751312;">Spells</h2>
                 <div id="spellsList" class="px-2">
@@ -67,7 +67,6 @@
                     {{/each}}
                 </div>
             </div>
-    
         </div>
     </div>
     {{!-- Player Art --}}
