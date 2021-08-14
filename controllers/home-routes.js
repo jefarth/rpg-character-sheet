@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Player, Class, Weapon, Armor, Spell, PlayerWeapon } = require('../models');
+const { Player, Class, Weapon, Armor, Spell } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
